@@ -1,0 +1,5 @@
+Checks:          '*, -some-check-to-disable'
+HeaderFilterRegex: '.*'
+ExtraArgs:
+  - -I./include
+
