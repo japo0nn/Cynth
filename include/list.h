@@ -3,12 +3,12 @@
 
 #include <headers.h>
 
-#define List(datatype)  \
-	struct {            \
-		datatype *data; \
-		int size;       \
-		int capacity;   \
-		int data_size;  \
+#define List(datatype)               \
+	struct {                         \
+		datatype *data;              \
+		unsigned long long size;     \
+		unsigned long long capacity; \
+		size_t data_size;            \
 	}
 
 #define list_init(list)                              \
