@@ -16,7 +16,7 @@
     ```
     or 
     ```
-    git@github.com:japo0nn/Cynth.git
+    git clone git@github.com:japo0nn/Cynth.git
     cd Cynth
     ```
 
