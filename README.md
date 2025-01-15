@@ -5,9 +5,9 @@
 ## Installation
 
 1. First you need to install required packages:
-    1.1. CMake
-    1.2. Clang
-    1.3. Git
+    - CMake
+    - Clang
+    - Git
 
 2. Clone this repo:
     ```
