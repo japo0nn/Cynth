@@ -1,48 +1,62 @@
-#include <hashset.h>
 #include <headers.h>
 #include <list.h>
 #include <sha256.h>
+#include <stdint.h>
+#include <hash_operations.h>
+#include <map.h>
 
-int main(void) {
-	printf("%s", "Hello Cynth!\n");
-	List(int) list;
-	list_init(&list);
+int main(int argc, char *argv[]) {
+    if (argc < 2)
+        printf("Please specify filepath\nExit code -2\n");
+    else
+        printf("Debugging started\n");
 
-	unsigned long long a = 30;
-	list_append(&list, &a);
-	for (int i = 0; i < list.size; i++) {
-		printf("%d\n", list.data[i]);  // Прямой доступ через массив
-	}
-	printf("%d \n", list.data[0]);
-	list_free(&list);
+    char alph[] = "abcdefghiljklmnopqrstuvwxyz";
+    uint32_t hashed = hash_data(alph, sizeof(alph));
+    printf("Hash: %u\n", hashed);
 
-	HashSet(int, int) hs;
-	hashset_init(&hs);
+    Map(char*, int) mapper;
+    map_init(&mapper);
+    uint32_t hash;
+    char* key1 = "abc";
+    char* key2 = "map";
+    char* key3 = "333";
+    int a = 3;
+    int b = 5;
+    int c = 7;
+    map_insert(&mapper, key1, &a);  // Вставляем значение
+    int* result;
+    get_by_hash(&mapper, key1, result);  // Получаем значение по ключу
 
-	char *str1 = "sss";
-	char *str2 = "sss";
+    if (result) {
+        printf("Value: %d\n", *result);  // Выводим значение
+    } else {
+        printf("Value not found\n");
+    }
 
-	bool isEquals = string_equals(str1, str2);
-	printf("%d\n", isEquals);
-	hashset_free(&hs);
-	bool isEqual = false;
-	printf("%d\n", isEqual);
+    map_insert(&mapper, key2, &b);  // Вставляем значение
+    map_insert(&mapper, key3, &c);
 
-	int value = 12345;
-	uint8_t hash[32];
+    List(char **) list1;
+    List(int *) list2;
 
-	sha256_hash(&value, sizeof(value), hash);
+    list_init(&list1);
+    list_init(&list2);
+    get_by_hash(&mapper, key2, result);  // Получаем значение по ключу
 
-	printf("Hash of int value:\n");
-	for (int i = 0; i < 32; i++) {
-		printf("%d", hash[i]);
-	}
-	printf("\n");
+    if (result) {
+        printf("Value: %d\n", *result);  // Выводим значение
+    } else {
+        printf("Value not found\n");
+    }
 
-    if (memcmp(hash, hash, 32) == 0)
-        printf("Success\n");
-    else{
-        printf("Failure\n");
+
+    get_by_hash(&mapper, key3, result);  // Получаем значение по ключу
+
+    if (result) {
+        printf("Value: %d\n", *result);  // Выводим значение
+    } else {
+        printf("Value not found\n");
     }
 	return 0;
 }

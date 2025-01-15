@@ -10,5 +10,5 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include_directories(include)
 
 # Указываем исходные файлы
-add_executable(CynthCompiler src/main.c src/sha256.c)
+add_executable(CynthCompiler src/main.c src/sha256.c src/hash_operations.c)
 
