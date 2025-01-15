@@ -6,6 +6,7 @@
 #include <string.h>
 #include <safefree.h>
 #include <bool.h>
+#include <stdint.h>
 
 #define SUCCESS 0
 #define FAILURE -1
